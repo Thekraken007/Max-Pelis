@@ -25,10 +25,9 @@ localStorage: Persistencia de películas favoritas en el navegador.
 The Movie Database (TMDB) API: Fuente de datos para películas y géneros.
 
 
-Desarrollador: [Tu Nombre o Alias] (¡eres una estrella! 🌟)
-Inspiración: HBO Max para el diseño y experiencia de usuario.
+Desarrollador: Alvaro Cedric García Valles
 API: The Movie Database (TMDB).
-Recursos: Axios, IntersectionObserver, y puro amor por el cine. ❤️
+Recursos: Axios, IntersectionObserver, y puro amor por el cine.
 
 
-Hecho con ❤️ estilo HBO MaxExplora MaxPelis ahora | Reporta un problema
+
