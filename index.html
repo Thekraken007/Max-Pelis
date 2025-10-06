@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MaxPelis</title>
+  <link rel="stylesheet" href="estilazos.css">
+</head>
+<body>
+  <header class="header-container">
+    <div class="header-left">
+      <span class="backButton">BACK</span>
+      <span class="returnToHome">HOME</span>
+    </div>
+    <h1 class="header-title">MaxPelis</h1>
+    <h2 class="header-title header-title--categoryView">Acción</h2>
+
+    <form class="header-searchForm">
+      <input type="text" placeholder="Busca tu película...">
+      <button class="header-searchForm button">🔍</button>
+    </form>
+  </header>
+
+  <section id="trendingPreview-container">
+    <div class="trendingPreview-header">
+      <h2 class="trendingPreview-title">Tendencias</h2>
+      <button class="trendingPreview-btn">Ver más</button>
+    </div>
+
+    <article class="trendingPreview-movieList" id="trendingPreview-movieList">
+      <!-- Películas en tendencia aquí -->
+    </article>
+  </section>
+
+  <section class="categoriesPreview-container">
+    <h2 class="categoriesPreview-title">Categorías</h2>
+    <article class="categoriesPreview-list" id="categoriesPreview-list">
+      <!-- Categorías aquí -->
+    </article>
+  </section>
+
+  <section id="liked" class="liked-container">
+    <div class="liked-header">
+      <h2 class="liked-title">Peliculas Favoritas</h2>
+    </div>
+    <article class="liked-movieList">
+      <!--Películas favoritas aquí-->
+    </article>
+  </section>
+
+  <section class="genericList-container inactive" id="genericList">
+    <!-- Listado genérico --> 
+  </section>
+
+  <section class="movieDetail-container inactive" id="movieDetail">
+    <div class="movieDetail-poster">
+      <div class="poster-bg"></div>
+      <img id="moviePoster" alt="Poster de la película">
+    </div>
+
+    <div class="movieDetail-content">
+      <h1 class="movieDetail-title">Nombre Película</h1>
+      <span class="movieDetail-score">8.5</span>
+      <p class="movieDetail-description">Descripción de la película...</p>
+      <div id="movieGenres" class="movieGenres"></div>
+      <h3 class="relatedMovies-title">Películas similares</h3>
+      <article class="relatedMovies-scrollContainer" id="relatedMovies-container">
+        <!-- Películas relacionadas -->
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <p>Hecho por Alvaro Cedric García 😎</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="new-element.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="nodes.js"></script>
+  <script src="script with axios.js"></script>
+  <script src="navigation.js"></script>
+</body>
+</html>
