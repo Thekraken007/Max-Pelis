@@ -43,13 +43,14 @@ const lazyLoader = new IntersectionObserver(entries => {
 });
 
 // ================= CREATE MOVIES =================
+// ================= CREATE MOVIES =================
 function createMovies(movies, container, { lazyLoad = false, clean = true } = {}) {
   if (clean) container.innerHTML = "";
 
   movies.forEach(movie => {
     const movieContainer = document.createElement("div");
     movieContainer.classList.add("movie-container");
-   
+    movieContainer.dataset.movieId = movie.id; // Agregar ID para identificar la película
 
     const movieImg = document.createElement("img");
     movieImg.classList.add("movie-img");
@@ -62,13 +63,19 @@ function createMovies(movies, container, { lazyLoad = false, clean = true } = {}
 
     const likeButton = document.createElement("button");
     likeButton.classList.add("likeButton");
-    if (likedMoviesList()[movie.id]) {
-    likeButton.classList.add("likeButton--liked");
+    const likedMovies = likedMoviesList();
+    if (likedMovies[movie.id]) {
+      likeButton.classList.add("likeButton--liked");
+    } else {
+      likeButton.classList.remove("likeButton--liked");
     }
-    likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("likeButton--liked");
-    likeMovie(movie);
-    })
+
+    likeButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      likeButton.classList.toggle("likeButton--liked");
+      likeMovie(movie);
+      updateLikeButtons(movie.id);
+    });
 
     if (lazyLoad) lazyLoader.observe(movieImg);
 
@@ -76,6 +83,36 @@ function createMovies(movies, container, { lazyLoad = false, clean = true } = {}
     movieContainer.appendChild(likeButton);
     container.appendChild(movieContainer);
   });
+}
+
+// Nueva función para actualizar todos los botones de "like" de una película
+function updateLikeButtons(movieId) {
+  const likedMovies = likedMoviesList();
+  const isLiked = likedMovies[movieId];
+  document.querySelectorAll(`.likeButton`).forEach(button => {
+    const parentContainer = button.closest(".movie-container");
+    if (parentContainer && parentContainer.dataset.movieId == movieId) {
+      if (isLiked) {
+        button.classList.add("likeButton--liked");
+      } else {
+        button.classList.remove("likeButton--liked");
+      }
+    }
+  });
+  getLikedMovies();
+}
+
+// Modificar likeMovie para aceptar updateLikeButtons
+function likeMovie(movie) {
+  const likedMovies = likedMoviesList();
+
+  if (likedMovies[movie.id]) {
+    delete likedMovies[movie.id];
+  } else {
+    likedMovies[movie.id] = movie;
+  }
+
+  localStorage.setItem("liked_movies", JSON.stringify(likedMovies));
 }
 
 // ================= CREATE CATEGORIES =================
