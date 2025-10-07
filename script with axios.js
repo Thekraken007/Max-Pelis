@@ -43,14 +43,14 @@ const lazyLoader = new IntersectionObserver(entries => {
 });
 
 // ================= CREATE MOVIES =================
-// ================= CREATE MOVIES =================
+
 function createMovies(movies, container, { lazyLoad = false, clean = true } = {}) {
   if (clean) container.innerHTML = "";
 
   movies.forEach(movie => {
     const movieContainer = document.createElement("div");
     movieContainer.classList.add("movie-container");
-    movieContainer.dataset.movieId = movie.id; // Agregar ID para identificar la película
+    movieContainer.dataset.movieId = movie.id; 
 
     const movieImg = document.createElement("img");
     movieImg.classList.add("movie-img");
@@ -85,7 +85,7 @@ function createMovies(movies, container, { lazyLoad = false, clean = true } = {}
   });
 }
 
-// Nueva función para actualizar todos los botones de "like" de una película
+
 function updateLikeButtons(movieId) {
   const likedMovies = likedMoviesList();
   const isLiked = likedMovies[movieId];
@@ -102,7 +102,7 @@ function updateLikeButtons(movieId) {
   getLikedMovies();
 }
 
-// Modificar likeMovie para aceptar updateLikeButtons
+
 function likeMovie(movie) {
   const likedMovies = likedMoviesList();
 
